@@ -1,6 +1,6 @@
 import type { HistoryItem } from '../types';
 
-const KEY_API = 'kpss_gemini_key';
+const KEY_API = 'AI_API_KEY';
 const KEY_HISTORY = 'kpss_exam_history';
 
 function safeParse<T>(raw: string | null, fallback: T): T {
