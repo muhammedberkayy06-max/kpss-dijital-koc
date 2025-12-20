@@ -14,14 +14,13 @@ function safeParse<T>(raw: string | null, fallback: T): T {
 }
 
 export const storage = {
-  // Yeni anahtar varsa onu oku, yoksa eski gemini anahtarına da bak (geri uyumluluk)
+  // Önce yeni anahtarı oku, yoksa eskiden kalanı da kabul et
   getApiKey: () => localStorage.getItem(KEY_API_NEW) || localStorage.getItem(KEY_API_OLD),
 
-  // Artık sadece yeni anahtara yaz
+  // Yeni anahtara yaz, eskiyi temizle
   setApiKey: (key: string) => {
     const k = key.trim();
     localStorage.setItem(KEY_API_NEW, k);
-    // Eskisini temizle
     localStorage.removeItem(KEY_API_OLD);
   },
 
